@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" id="WebApp_ID"
+xmlns="http://java.sun.com/xml/ns/j2ee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-2.5.xsd 
+http://java.sun.com/xml/ns/javaee 
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <display-name>Spring Web MVC Application</display-name>
+  
+  <servlet>
+  	<servlet-name>mvc-dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+ 	<servlet-name>mvc-dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+    <context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
+  </context-param>
+  <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:appcontext.xml</param-value>
+	</context-param>
+  <context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:log4j.properties</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class> org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+  
+  <welcome-file-list>
+  <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
